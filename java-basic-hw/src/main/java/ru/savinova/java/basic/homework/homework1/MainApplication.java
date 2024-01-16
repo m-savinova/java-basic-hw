@@ -11,8 +11,7 @@ public class MainApplication {
         int a = (int) (Math.random() * 30) - 10;
         int b = (int) (Math.random() * 30) - 10;
         int c = (int) (Math.random() * 30) - 10;
-        Random random = new Random();
-        boolean bln = random.nextBoolean();
+        boolean bln = Math.random() > 0.5;
         if (number == 1) {
             greetings();
         } else if (number == 2) {
