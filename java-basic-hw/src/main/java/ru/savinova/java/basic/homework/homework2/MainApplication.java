@@ -11,7 +11,7 @@ public class MainApplication {
         fillCell(5, new int[5]);
         increaseNum(100, new int[]{1, 2, 3, 4});
         sumOfHalf(1, 2, 2, 1, 1, 100);
-        sumArrs(new int[]{1, 1, 1}, new int[]{2, 2, 2,}, new int[]{3, 3, 3, 3, 3});
+        sumArrs(new int[]{1, 1}, new int[]{2, 2, 2,}, new int[]{3, 3, 3, 3, 3});
         point(1, 1, 1, 1, 1, 5);
         order(3, 2, 1, 0);
         reverse(0, 1, 2, 3, 4, 5);
@@ -25,12 +25,10 @@ public class MainApplication {
         }
     }
 
-    // или
     public static void printString2(int count, String str) {
         for (int i = 0; i < count; i++)
             System.out.println(str);
     }
-
 
     public static void printSum(int... arr) {
         int sum = 0;
@@ -75,7 +73,6 @@ public class MainApplication {
     }
 
     public static void sumArrs(int[] arr1, int[] arr2, int[] arr3) {
-        // находим максимальную длину входящих массивов
         int[] lengthArrs = new int[]{arr1.length, arr2.length, arr3.length};
         int maxLengthOfArrs = 0;
         for (int i = 1; i < lengthArrs.length; i++) {
@@ -84,49 +81,37 @@ public class MainApplication {
             }
         }
         System.out.println("Максимальная длина входящих массивов: " + maxLengthOfArrs + " элементов");
-        int[] sum = new int[maxLengthOfArrs];
-
-        // складываем массивы при условии, что i в массиве, иначе прибавляем 0
-        for (int i = 0; i < maxLengthOfArrs; i++) {
-            /*sum[i] = (i < arr1.length ? arr1[i] : 0) +
-                     (i < arr2.length ? arr2[i] : 0) +
-                     (i < arr3.length ? arr3[i] : 0);*/
-            int sumElem = 0;
-            if (i < arr1.length) {
-                sumElem += arr1[i];
-            }
-            if (i < arr2.length) {
-                sumElem += arr2[i];
-            }
-            if (i < arr3.length) {
-                sumElem += arr3[i];
-            }
-            sum[i] = sumElem;
-        }
+        int[] sum = sumElem(maxLengthOfArrs, arr1, arr2, arr3);
         System.out.println(Arrays.toString(sum));
+    }
+
+    private static int[] sumElem(int maxLengthOfArrs, int[] arr1, int[] arr2, int[] arr3) {
+        int[] sum = new int[maxLengthOfArrs];
+        for (int i = 0; i < maxLengthOfArrs; i++) {
+            sum[i] = (i < arr1.length ? arr1[i] : 0) +
+                     (i < arr2.length ? arr2[i] : 0) +
+                     (i < arr3.length ? arr3[i] : 0);
+        }
+        return sum;
     }
 
     public static void point(int... arr) {
         int len = arr.length;
         int sum = 0;
-
-        for (int i = 0; i < len; i++) {
-            sum += arr[i];
+        for (int j : arr) {
+            sum += j;
         }
-
-        int LSum = 0;
-        int RSum = sum;
-
+        int lSum = 0;
+        int rSum = sum;
         for (int i = 0; i < arr.length; ++i) {
-            if (LSum == arr[i]) {
+            if (lSum == arr[i]) {
                 System.out.println("true");
                 return;
             }
-            LSum += arr[i];
-            RSum -= arr[i];
+            lSum += arr[i];
+            rSum -= arr[i];
         }
-
-        if (LSum == RSum) {
+        if (lSum == rSum) {
             System.out.println("true");
         } else {
             System.out.println("false");
