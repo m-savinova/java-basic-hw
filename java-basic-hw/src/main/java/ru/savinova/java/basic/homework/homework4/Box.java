@@ -1,46 +1,48 @@
 package ru.savinova.java.basic.homework.homework4;
 
-import java.util.Objects;
-
 public class Box {
-    private final String[] boxSize;
-    private String boxColor;
-    private String status;
+    private final String[] size;
+    private String color;
+    private Boolean status;
 
-    public void setBoxColor(String boxColor) {
-        this.boxColor = boxColor;
-        System.out.println("Теперь коробка " + boxColor);
+    public void setColor(String color) {
+        this.color = color;
+        System.out.println("Теперь коробка " + color);
     }
 
-    public Box(String boxColor) {
-        this.boxSize = new String[3];
-        this.boxColor = boxColor;
-        this.status = "открыта";
+    public String getStatus() {
+        return ((status) ? "открыта" : "закрыта");
     }
 
-    public void printBoxInfo() {
-        System.out.print("Коробка " + boxColor + ", сейчас она " + status + " и в ней " + size() +
+    public Box(String color) {
+        this.size = new String[3];
+        this.color = color;
+        this.status = true;
+    }
+
+    public void printInfo() {
+        System.out.print("Коробка " + color + ", сейчас она " + getStatus() + " и в ней " + countOfThings() +
                 " предмет(а)(ов) из 3... ");
-        contentInBox();
+        showContent();
     }
 
-    public void openOrCloseBox() {
-        if (Objects.equals(status, "открыта")) {
-            status = "закрыта";
+    public void openOrClose() {
+        if (status) {
+            status = false;
             System.out.println("Закрываем коробку... Коробка закрыта!");
         } else {
-            status = "открыта";
+            status = true;
             System.out.println("Открываем коробку... Коробка открыта!");
         }
     }
 
-    public void putContent(String item) {
-        if (Objects.equals(status, "открыта")) {
-            for (int i = 0; i < boxSize.length; i++) {
-                if (boxSize[i] == null) {
-                    boxSize[i] = item;
+    public void put(String item) {
+        if (status) {
+            for (int i = 0; i < size.length; i++) {
+                if (size[i] == null) {
+                    size[i] = item;
                     System.out.print("В коробке есть место! Положили " + item + " в коробку. В коробке: ");
-                    contentInBox();
+                    showContent();
                     return;
                 }
             }
@@ -49,32 +51,31 @@ public class Box {
         }
     }
 
-    public String getContent(String item) {
-        for (int i = 0; i < boxSize.length; i++) {
-            if (item.equals(boxSize[i])) {
-                boxSize[i] = null;
+    public void get(String item) {
+        for (int i = 0; i < size.length; i++) {
+            if (item.equals(size[i])) {
+                size[i] = null;
                 System.out.print("Вытащили из коробки предмет. В коробке: ");
-                contentInBox();
+                showContent();
             }
         }
-        return null;
     }
 
-    int size() {
+    private int countOfThings() {
         int count = 0;
-        for (int i = 0; i < boxSize.length; i++) {
-            if (boxSize[i] != null) {
+        for (int i = 0; i < size.length; i++) {
+            if (size[i] != null) {
                 count++;
             }
         }
         return count;
     }
 
-    private void contentInBox() {
+    private void showContent() {
         System.out.print("[");
-        for (int i = 0; i < boxSize.length; i++) {
-            if (boxSize[i] != null) {
-                System.out.print(boxSize[i] + " ");
+        for (int i = 0; i < size.length; i++) {
+            if (size[i] != null) {
+                System.out.print(size[i] + " ");
             }
         }
         System.out.println("]");

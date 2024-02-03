@@ -4,7 +4,7 @@ public class User {
     private String secondName;
     private String name;
     private String middleName;
-    private int earOfBirth;
+    private int yearOfBirth;
     private String email;
 
     public String getSecondName() {
@@ -31,12 +31,12 @@ public class User {
         this.middleName = middleName;
     }
 
-    public int getEarOfBirth() {
-        return earOfBirth;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setEarOfBirth(int earOfBirth) {
-        this.earOfBirth = earOfBirth;
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 
     public String getEmail() {
@@ -47,16 +47,16 @@ public class User {
         this.email = email;
     }
 
-    public User(String secondName, String name, String middleName, int earOfBirth, String email) {
+    public User(String secondName, String name, String middleName, int yearOfBirth, String email) {
         this.secondName = secondName;
         this.name = name;
         this.middleName = middleName;
-        this.earOfBirth = earOfBirth;
+        this.yearOfBirth = yearOfBirth;
         this.email = email;
     }
 
-    public void printUserInfo() {
+    public void printInfo() {
         System.out.println("ФИО: " + secondName + " " + name + " " + middleName + "\n" + "Год рождения: "
-                + earOfBirth + "\n" + "e-mail: " + email + "\n");
+                + yearOfBirth + "\n" + "e-mail: " + email + "\n");
     }
 }
