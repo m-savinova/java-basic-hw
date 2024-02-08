@@ -1,9 +1,17 @@
 package ru.savinova.java.basic.homework.homework5;
 
-public class Animal {
-    String name;
-    int speed;
-    int endurance;
+public abstract class Animal {
+    private final String name;
+    private final int speed;
+    public int endurance;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
 
     public Animal(String name, int speed, int endurance) {
         this.name = name;
@@ -11,19 +19,19 @@ public class Animal {
         this.endurance = endurance;
     }
 
-    public int run(int distance) {
-        int time = 0;
-        endurance =- 1;
-        return time;
+    public void run(int distance) {
+        int time = Math.round((float) distance / speed);
+        endurance = endurance - distance;
+        if (endurance < 0) {
+            System.out.println("Время: -1. У " + name + " появилось состояние усталости");
+        } else {
+            System.out.println(name + " потратил(а) " + time + " сек. на забег.");
+        }
     }
 
-    public int swim(int distance) {
-        int time = 0;
-        endurance =- 1;
-        return time;
-    }
+    public abstract void swim(int distance);
 
     public void info() {
-        System.out.println(name + " " + endurance);
+        System.out.println("Выносливость " + name + " = " + endurance + " у.е.\n");
     }
 }
