@@ -6,13 +6,15 @@ public class Dog extends Animal {
     }
 
     @Override
-    public void swim(int distance) {
+    public int swim(int distance) {
         int time = Math.round((float) distance / getSpeed());
-        endurance = endurance - distance * 2;
+        endurance -= distance * 2;
         if (endurance < 0) {
-            System.out.println("Время: -1. У " + getName() + " появилось состояние усталости.");
-        } else {
-            System.out.println(getName() + " потратил(а) " + time + " сек. на заплыв.");
+            System.out.println("У " + getName() + " появилось состояние усталости.");
+            return -1;
         }
+        System.out.println(getName() + " потратил(а) " + time + " сек. на заплыв.");
+        return time;
+
     }
 }

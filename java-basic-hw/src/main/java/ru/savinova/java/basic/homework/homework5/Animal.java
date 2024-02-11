@@ -19,19 +19,24 @@ public abstract class Animal {
         this.endurance = endurance;
     }
 
-    public void run(int distance) {
+    public int run(int distance) {
         int time = Math.round((float) distance / speed);
         endurance = endurance - distance;
         if (endurance < 0) {
-            System.out.println("Время: -1. У " + name + " появилось состояние усталости");
-        } else {
-            System.out.println(name + " потратил(а) " + time + " сек. на забег.");
+            System.out.println("У " + getName() + " появилось состояние усталости.");
+            return -1;
         }
+        System.out.println(getName() + " потратил(а) " + time + " сек. на забег.");
+        return time;
     }
 
-    public abstract void swim(int distance);
+    public abstract int swim(int distance);
 
     public void info() {
-        System.out.println("Выносливость " + name + " = " + endurance + " у.е.\n");
+        if (endurance < 0) {
+            System.out.println("Выносливость " + name + " = 0 у.е.\n");
+            } else {
+            System.out.println("Выносливость " + name + " = " + endurance + " у.е.\n");
+        }
     }
 }
