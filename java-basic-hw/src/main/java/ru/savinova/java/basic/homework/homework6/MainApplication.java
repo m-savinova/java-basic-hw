@@ -1,0 +1,19 @@
+package ru.savinova.java.basic.homework.homework6;
+
+public class MainApplication {
+    public static void main(String[] args) {
+        Plate plate = new Plate(10);
+        Cat[] cat = {
+                new Cat("A"),
+                new Cat("B"),
+                new Cat("C")
+        };
+        for (int i = 0; i < cat.length; i++) {
+            cat[i].feed(plate, 5);
+            cat[i].appetitInfo();
+        }
+        plate.putKorm(15);
+        plate.putKorm(8);
+        plate.getCurrentKorm();
+    }
+}
