@@ -26,8 +26,9 @@ public class Plate {
         }
     }
 
-    public Boolean decreaseKorm(int amountOfDecreaseKorm) {
+    public boolean decreaseKorm(int amountOfDecreaseKorm) {
         if (currentKorm - amountOfDecreaseKorm >= 0) {
+            setCurrentKorm(currentKorm - amountOfDecreaseKorm);
             return true;
         } else {
             return false;
