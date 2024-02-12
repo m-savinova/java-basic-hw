@@ -12,8 +12,9 @@ public class MainApplication {
             cat[i].feed(plate, 5);
             cat[i].appetitInfo();
         }
+        System.out.println(plate.getCurrentKorm());
         plate.putKorm(15);
         plate.putKorm(8);
-        plate.getCurrentKorm();
+        System.out.println(plate.getCurrentKorm());
     }
 }
