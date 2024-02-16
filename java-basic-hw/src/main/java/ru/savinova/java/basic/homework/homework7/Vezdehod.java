@@ -1,36 +1,31 @@
 package ru.savinova.java.basic.homework.homework7;
 
-import static ru.savinova.java.basic.homework.homework7.Man.INTRANSPORT;
+import static ru.savinova.java.basic.homework.homework7.Man.CURRENT_TRANSPORT;
 
 public class Vezdehod implements Actions {
-    private static int gasoline = 100;
+    private int gasoline = 100;
 
     @Override
     public void getOn() {
-        INTRANSPORT = true;
-        System.out.println("Человек сел в вездеход");
+        CURRENT_TRANSPORT = "Вездеход";
+        System.out.println(Man.getName() + " сел в вездеход");
     }
 
     @Override
     public void getOut() {
-        INTRANSPORT = false;
-        System.out.println("Человек вышел из вездехода");
+        CURRENT_TRANSPORT = "Пешком";
+        System.out.println(Man.getName() + " вышел из вездехода");
     }
 
     @Override
     public boolean move(int distance, Terrains terrain) {
-        if (gasoline - (distance / 10) > 0) {
-            if (INTRANSPORT) {
-                gasoline -= distance / 5;
-                System.out.println("Человек проехал на вездеходе " + distance + " км. Бензина осталось "
-                        + gasoline + " л.");
-                return true;
-            } else {
-                System.out.println("Человек не в транспорте, ехать не может");
-                return false;
-            }
+        if (gasoline - (distance / 5) > 0) {
+            gasoline -= distance / 5;
+            System.out.println(Man.getName() + " проехал на вездеходе " + distance + " км. У вездехода осталось "
+                    + gasoline + " л. бензина");
+            return true;
         } else {
-            System.out.println("Бензина не хватает");
+            System.out.println("У вездехода не хватает бензина");
             return false;
         }
     }

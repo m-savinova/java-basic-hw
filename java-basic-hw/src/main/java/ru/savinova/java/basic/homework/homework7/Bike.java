@@ -1,18 +1,18 @@
 package ru.savinova.java.basic.homework.homework7;
 
-import static ru.savinova.java.basic.homework.homework7.Man.INTRANSPORT;
+import static ru.savinova.java.basic.homework.homework7.Man.CURRENT_TRANSPORT;
 
 public class Bike implements Actions {
     @Override
     public void getOn() {
-        INTRANSPORT = true;
-        System.out.println("Человек сел на велосипед");
+        CURRENT_TRANSPORT = "Велосипед";
+        System.out.println(Man.getName() + " сел на велосипед");
     }
 
     @Override
     public void getOut() {
-        INTRANSPORT = false;
-        System.out.println("Человек спешился с велосипеда");
+        CURRENT_TRANSPORT = "Пешком";
+        System.out.println(Man.getName() + " спешился с велосипеда");
     }
 
     @Override
@@ -21,11 +21,13 @@ public class Bike implements Actions {
             System.out.println("Велосипед не поедет по болоту");
             return false;
         }
-        if (INTRANSPORT) {
-            System.out.println("Человек проехал на велосипеде " + distance + " км.");
+        if (Man.getPowerOfMan() - (distance / 8) > 0) {
+            Man.setPowerOfMan(Man.getPowerOfMan() - distance / 8);
+            System.out.println(Man.getName() + " проехал на велосипеде " + distance + " км. У человека осталось " + Man.getPowerOfMan() + " сил");
             return true;
+        } else {
+            System.out.println(Man.getName() + " не хватает сил");
+            return false;
         }
-        System.out.println("Человек не в транспорте, ехать не может");
-        return false;
     }
 }
