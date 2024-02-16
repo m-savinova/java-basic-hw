@@ -28,9 +28,9 @@ public class Man {
         }
     }
 
-    public void move(Actions[] actions, int distance) {
+    public void move(Actions[] actions, int distance, Terrains terrain) {
         for (Actions action : actions) {
-            action.move(distance);
+            action.move(distance, terrain);
         }
     }
 

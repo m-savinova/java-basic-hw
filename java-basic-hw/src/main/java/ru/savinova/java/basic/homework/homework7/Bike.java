@@ -16,7 +16,11 @@ public class Bike implements Actions {
     }
 
     @Override
-    public boolean move(int distance) {
+    public boolean move(int distance, Terrains terrain) {
+        if (terrain == Terrains.SWAMP) {
+            System.out.println("Велосипед не поедет по болоту");
+            return false;
+        }
         if (INTRANSPORT) {
             System.out.println("Человек проехал на велосипеде " + distance + " км.");
             return true;

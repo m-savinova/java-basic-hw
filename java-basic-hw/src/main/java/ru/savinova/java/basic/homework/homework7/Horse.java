@@ -18,17 +18,23 @@ public class Horse implements Actions {
     }
 
     @Override
-    public boolean move(int distance) {
-        if (power > 0 && INTRANSPORT) {
-            power -= distance / 2;
-            System.out.println("Человек проехал на лошади " + distance + " км. У лошади осталось осталось " + power + " сил");
-            return true;
+    public boolean move(int distance, Terrains terrain) {
+        if (terrain == Terrains.SWAMP) {
+            System.out.println("Лошадке нечего делать на болоте");
+            return false;
         }
-        if (power <= 0) {
-            System.out.println("Сил у лошадки не осталось");
+        if (power - (distance / 10) > 0) {
+            if (INTRANSPORT) {
+                power -= distance / 2;
+                System.out.println("Человек проехал на лошади " + distance + " км. У лошади осталось " + power + " сил");
+                return true;
+            } else {
+                System.out.println("Человек не в транспорте, ехать не может");
+                return false;
+            }
         } else {
-            System.out.println("Человек не в транспорте, ехать не может");
+            System.out.println("У лошадки не хватает сил");
+            return false;
         }
-        return false;
     }
 }

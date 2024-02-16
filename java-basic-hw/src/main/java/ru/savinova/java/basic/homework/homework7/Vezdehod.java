@@ -18,17 +18,20 @@ public class Vezdehod implements Actions {
     }
 
     @Override
-    public boolean move(int distance) {
-        if (gasoline > 0 && INTRANSPORT) {
-            gasoline -= distance / 5;
-            System.out.println("Человек проехал на вездеходе " + distance + " км. Бензина осталось " + gasoline + " л.");
-            return true;
-        }
-        if (gasoline <= 0) {
-            System.out.println("Бензина не осталось");
+    public boolean move(int distance, Terrains terrain) {
+        if (gasoline - (distance / 10) > 0) {
+            if (INTRANSPORT) {
+                gasoline -= distance / 5;
+                System.out.println("Человек проехал на вездеходе " + distance + " км. Бензина осталось "
+                        + gasoline + " л.");
+                return true;
+            } else {
+                System.out.println("Человек не в транспорте, ехать не может");
+                return false;
+            }
         } else {
-            System.out.println("Человек не в транспорте, ехать не может");
+            System.out.println("Бензина не хватает");
+            return false;
         }
-        return false;
     }
 }

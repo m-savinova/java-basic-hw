@@ -18,17 +18,23 @@ public class Car implements Actions {
     }
 
     @Override
-    public boolean move(int distance) {
-        if (gasoline > 0 && INTRANSPORT) {
-            gasoline -= distance / 10;
-            System.out.println("Человек проехал на машине " + distance + " км. Бензина осталось " + gasoline + " л.");
-            return true;
+    public boolean move(int distance, Terrains terrain) {
+        if (terrain == Terrains.DENSE_FOREST || terrain == Terrains.SWAMP) {
+            System.out.println("Машина не поедет по густому лесу или болоту");
+            return false;
         }
-        if (gasoline <= 0) {
-            System.out.println("Бензина не осталось");
+        if (gasoline - (distance / 10) > 0) {
+            if (INTRANSPORT) {
+                gasoline -= distance / 10;
+                System.out.println("Человек проехал на машине " + distance + " км. У машины осталось " + gasoline + " л. бензина.");
+                return true;
+            } else {
+                System.out.println("Человек не в машине, ехать не может");
+                return false;
+            }
         } else {
-            System.out.println("Человек не в транспорте, ехать не может");
+            System.out.println("У машины не хватает бензина.");
+            return false;
         }
-        return false;
     }
 }
