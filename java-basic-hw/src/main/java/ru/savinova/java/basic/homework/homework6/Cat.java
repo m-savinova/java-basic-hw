@@ -21,15 +21,15 @@ public class Cat {
                 System.out.println("В тарелке нет такого количества корма, чтобы покормить кота " + getName());
             }
         } else {
-            System.out.println("Кот " + getName() + " не голоден.");
+            System.out.println("Кот " + name + " не голоден.");
         }
     }
 
     public void appetitInfo() {
         if (!appetite) {
-            System.out.println("Кот " + getName() + " сыт (не голоден)!");
+            System.out.println("Кот " + name + " сыт (не голоден)!");
         } else {
-            System.out.println("Кот " + getName() + " не сыт (смелый кот, но голоден)");
+            System.out.println("Кот " + name + " не сыт (смелый кот, но голоден)");
         }
     }
 }
