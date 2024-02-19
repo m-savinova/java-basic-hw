@@ -1,55 +1,43 @@
 package ru.savinova.java.basic.homework.homework7;
 
-import java.util.Objects;
-
 public class Man {
-    public static String NAME;
-    public static String CURRENT_TRANSPORT;
-    private static int POWER_OF_MAN = 100;
+    private String name;
+    private boolean currentTransport;
+    private int powerOfMan = 100;
 
-    public static String getName() {
-        return NAME;
+    public boolean isCurrentTransport() {
+        return currentTransport;
     }
 
-    public String getCurrentTransport() {
-        return CURRENT_TRANSPORT;
-    }
-
-    public static int getPowerOfMan() {
-        return POWER_OF_MAN;
-    }
-
-    public static void setPowerOfMan(int powerOfMan) {
-        POWER_OF_MAN = powerOfMan;
+    public int getPowerOfMan() {
+        return powerOfMan;
     }
 
     public Man(String name) {
-        Man.NAME = name;
+        this.name = name;
     }
 
     public void getOn(Actions[] actions) {
+        currentTransport = true;
         for (Actions action : actions) {
             action.getOn();
         }
     }
 
-    public void walk() {
-        System.out.println("Пошёл пешком");
-    }
-
     public boolean move(Actions[] actions, int distance, Terrains terrain) {
-        if (!Objects.equals(CURRENT_TRANSPORT, "Пешком")) {
+        if (isCurrentTransport()) {
             for (Actions action : actions) {
                 action.move(distance, terrain);
             }
             return true;
         } else {
-            System.out.println(Man.getName() + " пошел пешком");
+            System.out.println(name + " пошел пешком");
             return false;
         }
     }
 
     public void getOut(Actions[] actions) {
+        currentTransport = false;
         for (Actions actions1 : actions) {
             actions1.getOut();
         }

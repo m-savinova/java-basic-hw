@@ -1,18 +1,20 @@
 package ru.savinova.java.basic.homework.homework7;
 
-import static ru.savinova.java.basic.homework.homework7.Man.CURRENT_TRANSPORT;
-
 public class Bike implements Actions {
+    private int powerOfMan;
+
+    public Bike(int powerOfMan) {
+        this.powerOfMan = powerOfMan;
+    }
+
     @Override
     public void getOn() {
-        CURRENT_TRANSPORT = "Велосипед";
-        System.out.println(Man.getName() + " сел на велосипед");
+        System.out.println(" сел на велосипед");
     }
 
     @Override
     public void getOut() {
-        CURRENT_TRANSPORT = "Пешком";
-        System.out.println(Man.getName() + " спешился с велосипеда");
+        System.out.println(" спешился с велосипеда");
     }
 
     @Override
@@ -21,12 +23,12 @@ public class Bike implements Actions {
             System.out.println("Велосипед не поедет по болоту");
             return false;
         }
-        if (Man.getPowerOfMan() - (distance / 8) > 0) {
-            Man.setPowerOfMan(Man.getPowerOfMan() - distance / 8);
-            System.out.println(Man.getName() + " проехал на велосипеде " + distance + " км. У человека осталось " + Man.getPowerOfMan() + " сил");
+        if (powerOfMan - (distance / 8) > 0) {
+            powerOfMan = (powerOfMan - distance / 8);
+            System.out.println(" проехал на велосипеде " + distance + " км. У человека осталось " + powerOfMan + " сил");
             return true;
         } else {
-            System.out.println(Man.getName() + " не хватает сил");
+            System.out.println(" не хватает сил");
             return false;
         }
     }
