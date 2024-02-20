@@ -1,14 +1,15 @@
 package ru.savinova.java.basic.homework.homework7;
 
+import java.util.Objects;
+
 public class Man {
     private String name;
-    private boolean currentTransport;
+    private String currentTransport;
     private int powerOfMan = 100;
 
-    public boolean isCurrentTransport() {
+    public String getCurrentTransport() {
         return currentTransport;
     }
-
     public int getPowerOfMan() {
         return powerOfMan;
     }
@@ -17,29 +18,36 @@ public class Man {
         this.name = name;
     }
 
-    public void getOn(Actions[] actions) {
-        currentTransport = true;
-        for (Actions action : actions) {
-            action.getOn();
-        }
-    }
-
-    public boolean move(Actions[] actions, int distance, Terrains terrain) {
-        if (isCurrentTransport()) {
-            for (Actions action : actions) {
-                action.move(distance, terrain);
-            }
-            return true;
+    public void getIn(Transport transport) {
+        if (currentTransport == null) {
+            currentTransport = transport.nameOfTransport();
+            System.out.println(name + " got into the " + currentTransport);
         } else {
-            System.out.println(name + " пошел пешком");
-            return false;
+            System.out.println(name + " в " + currentTransport);
         }
     }
 
-    public void getOut(Actions[] actions) {
-        currentTransport = false;
-        for (Actions actions1 : actions) {
-            actions1.getOut();
+    public void getOut() {
+        if (currentTransport != null) {
+            System.out.println(name + " got out the " + currentTransport);
+            currentTransport = null;
+        } else {
+            System.out.println(name + " не в транспорте");
+        }
+    }
+
+    public boolean move(Transport transport, int distance, Terrains terrain) {
+        if (currentTransport != null) {
+            if (Objects.equals(currentTransport, transport.nameOfTransport())) {
+                transport.move(distance, terrain, name);
+                return true;
+            } else {
+                System.out.println(name + " сейчас не в " + transport.nameOfTransport());
+                return false;
+            }
+        } else {
+            System.out.println(name + " walked, because he didn't get on the transport");
+            return false;
         }
     }
 }

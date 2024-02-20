@@ -1,20 +1,15 @@
 package ru.savinova.java.basic.homework.homework7;
 
-public class Horse implements Actions {
+public class Horse implements Transport {
     private int power = 100;
 
     @Override
-    public void getOn() {
-        System.out.println(" сел на лошадь");
+    public String nameOfTransport() {
+        return "Horse";
     }
 
     @Override
-    public void getOut() {
-        System.out.println(" соскочил с лошади");
-    }
-
-    @Override
-    public boolean move(int distance, Terrains terrain) {
+    public boolean move(int distance, Terrains terrain, String name) {
         if (terrain == Terrains.SWAMP) {
             System.out.println("Лошадке нечего делать на болоте");
             return false;

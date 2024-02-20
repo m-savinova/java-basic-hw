@@ -3,19 +3,15 @@ package ru.savinova.java.basic.homework.homework7;
 public class MainApplication {
     public static void main(String[] args) {
         Man man = new Man("Bob");
+        Man man1 = new Man("Mike");
         Car car = new Car();
         Horse horse = new Horse();
-        Bike bike = new Bike(man.getPowerOfMan());
+        Bike bike = new Bike();
         Vezdehod vezdehod = new Vezdehod();
 
-        man.getOn(new Actions[]{car});
-        man.getOut(new Actions[]{car});
-        System.out.println(man.isCurrentTransport());
-        man.move(new Actions[]{horse}, 50, Terrains.DENSE_FOREST);
-        man.getOn(new Actions[]{car, horse, bike, vezdehod});
-        man.move(new Actions[]{car, horse, bike, vezdehod}, 50, Terrains.SWAMP);
-        man.move(new Actions[]{car, horse, bike, vezdehod}, 500, Terrains.PLAIN);
-        man.move(new Actions[]{car, horse, bike, vezdehod}, 500, Terrains.PLAIN);
-        System.out.println(man.isCurrentTransport());
+        man1.getIn(bike);
+        man1.move(bike, 100, Terrains.PLAIN);
+        man.getIn(bike);
+        man.move(bike, 100, Terrains.PLAIN);
     }
 }
