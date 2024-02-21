@@ -1,6 +1,7 @@
 package ru.savinova.java.basic.homework.homework9;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DoArray {
     public ArrayList fromMinToMax(int min, int max) {
@@ -22,14 +23,14 @@ public class DoArray {
         return sum;
     }
 
-    public void rewrite(int num, ArrayList<Integer> list) {
+    public void rewrite(int num, List<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
             list.set(i, num);
         }
         System.out.println(list);
     }
 
-    public void increase(int num, ArrayList<Integer> list) {
+    public void increase(int num, List<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
             list.set(i, list.get(i) + num);
         }
