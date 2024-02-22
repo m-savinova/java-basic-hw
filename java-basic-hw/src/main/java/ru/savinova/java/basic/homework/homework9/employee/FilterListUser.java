@@ -24,12 +24,6 @@ public class FilterListUser {
         return users;
     }
 
-    public void printList(List<User> arrayList) {
-        for (User users : arrayList) {
-            System.out.println(users.getName() + " " + users.getAge() + " годиков");
-        }
-    }
-
     public Boolean isAverageAge(List<User> users, int minAverage) {
         int averageAgeUsers = 0;
         for (int i = 0; i < users.size(); i++) {
@@ -38,11 +32,13 @@ public class FilterListUser {
         return ((averageAgeUsers / users.size()) > minAverage);
     }
 
-    public void youngest(List<User> users) {
+    public User getYoungest(List<User> users) {
         int minAge = 0;
-        for (int i = 0; i < users.size(); i++) {
-            users.get(i).getAge();
+        for (int i = 1; i < users.size(); i++) {
+            if (users.get(i).getAge() < users.get(i - 1).getAge()) {
+                minAge = i;
+            }
         }
-        return;
+        return users.get(minAge);
     }
 }
