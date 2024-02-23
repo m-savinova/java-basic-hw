@@ -3,19 +3,25 @@ package ru.savinova.java.basic.homework.homework7;
 import java.util.Objects;
 
 public class Man {
-    private String name;
+    private final String name;
     private String currentTransport;
-    private int powerOfMan = 100;
+    private int powerOfMan;
 
     public String getCurrentTransport() {
         return currentTransport;
     }
+
     public int getPowerOfMan() {
         return powerOfMan;
     }
 
-    public Man(String name) {
+    public void setPowerOfMan(int powerOfMan) {
+        this.powerOfMan = powerOfMan;
+    }
+
+    public Man(String name, int powerOfMan) {
         this.name = name;
+        this.powerOfMan = powerOfMan;
     }
 
     public void getIn(Transport transport) {
@@ -23,7 +29,7 @@ public class Man {
             currentTransport = transport.nameOfTransport();
             System.out.println(name + " got into the " + currentTransport);
         } else {
-            System.out.println(name + " в " + currentTransport);
+            System.out.println(name + " in " + currentTransport);
         }
     }
 
@@ -39,7 +45,7 @@ public class Man {
     public boolean move(Transport transport, int distance, Terrains terrain) {
         if (currentTransport != null) {
             if (Objects.equals(currentTransport, transport.nameOfTransport())) {
-                transport.move(distance, terrain, name);
+                transport.move(distance, terrain, name, Man.this);
                 return true;
             } else {
                 System.out.println(name + " сейчас не в " + transport.nameOfTransport());

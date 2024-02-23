@@ -9,7 +9,7 @@ public class Vezdehod implements Transport {
     }
 
     @Override
-    public boolean move(int distance, Terrains terrain, String name) {
+    public boolean move(int distance, Terrains terrain, String name, Man man) {
         if (gasoline - (distance / 5) > 0) {
             gasoline -= distance / 5;
             System.out.println(" проехал на вездеходе " + distance + " км. У вездехода осталось "
