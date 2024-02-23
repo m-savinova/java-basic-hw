@@ -4,36 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DoArray {
-    public ArrayList fromMinToMax(int min, int max) {
-        ArrayList<Integer> integerArrayList = new ArrayList<>();
-        for (int i = min; i < max + 1; i++) {
+    /**
+     * возвращает ArrayList в диапазоне от min до max включительно
+     */
+    public void fromMinToMax(int min, int max) {
+        List<Integer> integerArrayList = new ArrayList<>();
+        for (int i = min; i <= max; i++) {
             integerArrayList.add(i);
         }
         System.out.println(integerArrayList);
-        return integerArrayList;
     }
 
+    /**
+     * возвращает сумму всех элементов ArrayList, значение которых больше 5
+     */
     public int sumAllElem(ArrayList<Integer> arrayList) {
         int sum = 0;
-        for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i) > 5) {
-                sum += arrayList.get(i);
+        for (Integer integer : arrayList) {
+            if (integer > 5) {
+                sum += integer;
             }
         }
         return sum;
     }
 
+    /**
+     * заменяет все элементы списка указанным числом (num)
+     */
     public void rewrite(int num, List<Integer> list) {
-        for (int i = 0; i < list.size(); i++) {
-            list.set(i, num);
-        }
+        list.replaceAll(ignored -> num);
         System.out.println(list);
     }
 
-    public void increase(int num, List<Integer> list) {
-        for (int i = 0; i < list.size(); i++) {
-            list.set(i, list.get(i) + num);
-        }
+    /**
+     * увеличивает каждый элемент списка на указанное число (num)
+     */
+    public void increaseByNum(int num, List<Integer> list) {
+        list.replaceAll(integer -> integer + num);
         System.out.println(list);
     }
 }

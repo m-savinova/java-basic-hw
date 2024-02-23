@@ -11,8 +11,8 @@ public class MainApp {
         users.add(new User("Glasha", 30));
         users.add(new User("Bob", 40));
         System.out.println(filterListUser.getArrayOfName(users));
-        System.out.println((filterListUser.getOlder(users, 30)));
-        System.out.println(filterListUser.isAverageAge(users, 29));
-        System.out.println(filterListUser.getYoungest(users));
+        System.out.println((filterListUser.getOverMinAge(users, 30)));
+        System.out.println(filterListUser.isExceedsAverageAge(users, 29));
+        System.out.println(filterListUser.getYoungestUser(users));
     }
 }

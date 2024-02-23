@@ -10,6 +10,6 @@ public class MainApplication {
         ArrayList<Integer> intArrayList = new ArrayList<>(Arrays.asList(10, 2, 3, 20, 5));
         System.out.println("Сумма элементов = " + doArray.sumAllElem(intArrayList));
         doArray.rewrite(1, intArrayList);
-        doArray.increase(3, intArrayList);
+        doArray.increaseByNum(3, intArrayList);
     }
 }

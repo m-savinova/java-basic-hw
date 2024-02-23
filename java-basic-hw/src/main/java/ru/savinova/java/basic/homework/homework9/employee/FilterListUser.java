@@ -1,41 +1,51 @@
 package ru.savinova.java.basic.homework.homework9.employee;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class FilterListUser {
+    /**
+     * возвращает список имен сотрудников
+     */
     public List<String> getArrayOfName(List<User> users) {
         List<String> arrayOfName = new ArrayList<>();
-        for (int i = 0; i < users.size(); i++) {
-            arrayOfName.add(users.get(i).getName());
+        for (User user : users) {
+            arrayOfName.add(user.getName());
         }
         return arrayOfName;
     }
 
-    public List<User> getOlder(List<User> users, int minAge) {
-        Iterator<User> iter = users.listIterator();
-        while (iter.hasNext()) {
-            User user = iter.next();
-            if (user.getAge() < minAge) {
-                iter.remove();
+    /**
+     * возвращает список сотрудников, возраст которых больше либо равен minAge
+     */
+    public List<User> getOverMinAge(List<User> users, int minAge) {
+        List<User> listOverMinAge = new ArrayList<>();
+        for (User user : users) {
+            if (user.getAge() >= minAge) {
+                listOverMinAge.add(user);
             }
         }
-        return users;
+        return listOverMinAge;
     }
 
-    public Boolean isAverageAge(List<User> users, int minAverage) {
+    /**
+     * проверяет, что средний возраст сотрудников превышает minAverageAge
+     */
+    public Boolean isExceedsAverageAge(List<User> users, int minAverageAge) {
         int averageAgeUsers = 0;
         for (int i = 0; i < users.size(); i++) {
             averageAgeUsers += users.get(i).getAge();
         }
-        return ((averageAgeUsers / users.size()) > minAverage);
+        return ((averageAgeUsers / users.size()) > minAverageAge);
     }
 
-    public User getYoungest(List<User> users) {
-        int minAge = 0;
+    /**
+     * возвращает ссылку на самого молодого сотрудника
+     */
+    public User getYoungestUser(List<User> users) {
+        int minAge = users.get(0).getAge();
         for (int i = 1; i < users.size(); i++) {
-            if (users.get(i).getAge() < users.get(i - 1).getAge()) {
+            if (users.get(i).getAge() < minAge) {
                 minAge = i;
             }
         }
