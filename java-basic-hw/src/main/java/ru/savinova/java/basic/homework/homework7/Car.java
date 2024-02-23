@@ -9,7 +9,7 @@ public class Car implements Transport {
     }
 
     @Override
-    public boolean move(int distance, Terrains terrain, String name) {
+    public boolean move(int distance, Terrains terrain, String name, Man man) {
         if (terrain == Terrains.DENSE_FOREST || terrain == Terrains.SWAMP) {
             System.out.println("Car will not drive through a dense forest or swamp");
             return false;

@@ -9,7 +9,7 @@ public class Horse implements Transport {
     }
 
     @Override
-    public boolean move(int distance, Terrains terrain, String name) {
+    public boolean move(int distance, Terrains terrain, String name, Man man) {
         if (terrain == Terrains.SWAMP) {
             System.out.println("Лошадке нечего делать на болоте");
             return false;
