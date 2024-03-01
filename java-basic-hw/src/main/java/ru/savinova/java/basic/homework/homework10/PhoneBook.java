@@ -5,7 +5,7 @@ import java.util.*;
 public class PhoneBook {
     Map<String, Set<String>> mapPhoneBook = new HashMap<>();
 
-    public void add(String name, HashSet<String> phone) {
+    public void add(String name, Set<String> phone) {
         mapPhoneBook.put(name, phone);
     }
 
