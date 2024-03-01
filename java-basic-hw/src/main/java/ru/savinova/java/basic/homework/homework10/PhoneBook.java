@@ -1,38 +1,37 @@
 package ru.savinova.java.basic.homework.homework10;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class PhoneBook {
-    Map<String, String> mapPhoneBook = new HashMap<>();
+    Map<String, HashSet<String>> mapPhoneBook = new HashMap<>();
 
-    public void add(String phone, String name) {
-        mapPhoneBook.put(phone, name);
+    public void add(String name, HashSet<String> phone) {
+        mapPhoneBook.put(name, phone);
     }
 
     public void getPhoneBook() {
-        for (Map.Entry<String, String> entry : mapPhoneBook.entrySet()) {
-            System.out.println(entry.getValue() + " " + entry.getKey());
+        for (Map.Entry<String, HashSet<String>> entry : mapPhoneBook.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
         }
     }
 
     public void find(String searchName) {
-        for (Map.Entry<String, String> entry : mapPhoneBook.entrySet()) {
+        for (Map.Entry<String, HashSet<String>> entry : mapPhoneBook.entrySet()) {
             String key = entry.getKey();
-            String value = entry.getValue();
-            if (value.contains(searchName)) {
-                System.out.println(key);
+            HashSet<String> value = entry.getValue();
+            if (key.contains(searchName)) {
+                System.out.println(value);
             }
         }
     }
 
-    public boolean containsPhoneNumber(String num) {
-        if (mapPhoneBook.containsKey(num)) {
-            System.out.println("Телефон " + num + " есть в справочнике");
-            return true;
+    public void containsPhoneNumber(String num) {
+        for (HashSet<String> hashSet : mapPhoneBook.values()) {
+            if (hashSet.contains(num)) {
+                System.out.println("Номер " + num + " присутствует в телефонной книге");
+                return;
+            }
         }
-        System.out.println("Телефон " + num + " отсутствует в справочнике");
-        return false;
+        System.out.println("Номер " + num + " отсутствует в телефонной книге");
     }
 }
