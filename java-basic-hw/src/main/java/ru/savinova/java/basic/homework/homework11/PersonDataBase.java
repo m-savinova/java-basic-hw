@@ -2,10 +2,11 @@ package ru.savinova.java.basic.homework.homework11;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class PersonDataBase {
 
-    Map<Integer, String> base = new HashMap<>();
+    Map<Integer, Person> base = new HashMap<>();
 
     public Person findById(Long id) {
 
