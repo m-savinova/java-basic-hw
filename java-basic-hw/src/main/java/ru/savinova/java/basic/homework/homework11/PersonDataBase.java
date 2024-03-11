@@ -7,10 +7,10 @@ import static ru.savinova.java.basic.homework.homework11.Position.*;
 public class PersonDataBase {
 
     ArrayList<Person> base = new ArrayList<>();
-    Set<Position> Managers = EnumSet.of(MANAGER, DIRECTOR, BRANCH_DIRECTOR, SENIOR_MANAGER);
+    Set<Position> manager = EnumSet.of(MANAGER, DIRECTOR, BRANCH_DIRECTOR, SENIOR_MANAGER);
 
     public Person findById(Long id) {
-        for (Person person: base) {
+        for (Person person : base) {
             if (person.getId().equals(id)) {
                 return person;
             }
@@ -23,13 +23,13 @@ public class PersonDataBase {
     }
 
     public boolean isManager(Person person) {
-        for (Position position : Managers) {
+        for (Position position : manager) {
             if (person.getPosition().equals(position)) {
-                System.out.println(person.getId() + " менеджер");
+                System.out.println(person.getId() + " manager");
                 return true;
             }
         }
-        System.out.println(person.getId() + " не менеджер");
+        System.out.println(person.getId() + " not manager");
         return false;
     }
 
