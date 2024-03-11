@@ -25,22 +25,22 @@ public class PersonDataBase {
     public boolean isManager(Person person) {
         for (Position position : manager) {
             if (person.getPosition().equals(position)) {
-                System.out.println(person.getId() + " manager");
+                System.out.println(person.getName() + ", ID:" + person.getId() + ", manager");
                 return true;
             }
         }
-        System.out.println(person.getId() + " not manager");
+        System.out.println(person.getName() + ", ID:" + person.getId() + ", not manager");
         return false;
     }
 
     public boolean isEmployee(Long id) {
         for (Person person : base) {
             if (Objects.equals(person.getId(), id) && !isManager(person)) {
-                System.out.println(person.getId() + " employee");
+                System.out.println(person.getName() + ", ID:" + person.getId() + ", employee");
                 return true;
             }
         }
-        System.out.println(id + " not employee");
+        System.out.println("ID:" + id + ", not employee");
         return false;
     }
 }
