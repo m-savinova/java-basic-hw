@@ -3,10 +3,9 @@ package ru.savinova.java.basic.homework.homework11;
 public class Person {
     private final String name;
     private final Position position;
-    private final Long id;
+    private Long id;
 
-    public Person(String name, Position position, Long id) {
-        this.id = id;
+    public Person(String name, Position position) {
         this.name = name;
         this.position = position;
     }
@@ -21,5 +20,9 @@ public class Person {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -6,20 +6,16 @@ import static ru.savinova.java.basic.homework.homework11.Position.*;
 
 public class PersonDataBase {
 
-    ArrayList<Person> base = new ArrayList<>();
-    Set<Position> manager = EnumSet.of(MANAGER, DIRECTOR, BRANCH_DIRECTOR, SENIOR_MANAGER);
+    private final Map<Long, Person> base = new HashMap<>();
+    private final Set<Position> manager = EnumSet.of(MANAGER, DIRECTOR, BRANCH_DIRECTOR, SENIOR_MANAGER);
 
     public Person findById(Long id) {
-        for (Person person : base) {
-            if (person.getId().equals(id)) {
-                return person;
-            }
-        }
-        return null;
+        return base.get(id);
     }
 
-    public void add(Person person) {
-        base.add(person);
+    public void add(Long id, Person person) {
+        person.setId(id);
+        base.put(person.getId(), person);
     }
 
     public boolean isManager(Person person) {
@@ -34,7 +30,7 @@ public class PersonDataBase {
     }
 
     public boolean isEmployee(Long id) {
-        for (Person person : base) {
+        for (Person person : base.values()) {
             if (Objects.equals(person.getId(), id) && !isManager(person)) {
                 System.out.println(person.getName() + ", ID:" + person.getId() + ", employee");
                 return true;
