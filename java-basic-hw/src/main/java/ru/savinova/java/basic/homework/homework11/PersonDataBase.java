@@ -19,24 +19,11 @@ public class PersonDataBase {
     }
 
     public boolean isManager(Person person) {
-        for (Position position : manager) {
-            if (person.getPosition().equals(position)) {
-                System.out.println(person.getName() + ", ID:" + person.getId() + ", manager");
-                return true;
-            }
-        }
-        System.out.println(person.getName() + ", ID:" + person.getId() + ", not manager");
-        return false;
+        long n = person.getId();
+        return manager.contains(base.get(n).getPosition());
     }
 
     public boolean isEmployee(Long id) {
-        for (Person person : base.values()) {
-            if (Objects.equals(person.getId(), id) && !isManager(person)) {
-                System.out.println(person.getName() + ", ID:" + person.getId() + ", employee");
-                return true;
-            }
-        }
-        System.out.println("ID:" + id + ", not employee");
-        return false;
+        return !manager.contains(base.get(id).getPosition());
     }
 }

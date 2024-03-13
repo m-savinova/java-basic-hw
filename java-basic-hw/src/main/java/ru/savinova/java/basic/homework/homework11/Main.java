@@ -9,8 +9,7 @@ public class Main {
         personDataBase.add(5L, new Person("Bob", Position.PLUMBER));
         personDataBase.add(4L, new Person("John", Position.ENGINEER));
         personDataBase.add(1L, new Person("Tom", Position.DIRECTOR));
-        personDataBase.isManager(personDataBase.findById(3L));
-        personDataBase.isEmployee(5L);
-
+        System.out.println(personDataBase.isManager(personDataBase.findById(3L)));
+        System.out.println(personDataBase.isEmployee(3L));
     }
 }
