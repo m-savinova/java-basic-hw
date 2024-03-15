@@ -4,10 +4,9 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class MainApp extends ReadAndWriteFile {
+public class MainApp extends actionsWithFile {
     public static void main(String[] args) {
-        File file = new File("java-basic-hw");
-        System.out.println(Arrays.toString(file.listFiles()));
+        listOfFiles();
         Scanner input = new Scanner(System.in);
         System.out.println("Введите название файла с которым вы хотите работать: ");
         String name = input.nextLine();
