@@ -1,10 +1,8 @@
 package ru.savinova.java.basic.homework.homework12;
 
-import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class MainApp extends actionsWithFile {
+public class MainApp extends ActionsWithFile {
     public static void main(String[] args) {
         listOfFiles();
         Scanner input = new Scanner(System.in);

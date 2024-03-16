@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class actionsWithFile {
+public class ActionsWithFile {
     public static void listOfFiles () {
         File file = new File(".");
         System.out.println(Arrays.toString(file.list()));
