@@ -10,8 +10,8 @@ public class Client {
         while (true) {
             try (Socket socket = new Socket("localhost", 8080)) {
                 ExampleClient client = new ExampleClient(socket.getInputStream(), socket.getOutputStream());
-                System.out.println(client.read());
-                System.out.println("Enter two numbers and operand without spaces:");
+                System.out.println("Use this operand: " + client.read());
+                System.out.println("Enter two numbers and operand separated by space:");
                 String userMessage = scanner.nextLine();
                 if (userMessage.equals("exit")) {
                     break;

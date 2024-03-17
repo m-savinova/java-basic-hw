@@ -29,9 +29,10 @@ public class Server {
     }
 
     public static String arithmeticOperations(String input) {
-        int a = Character.getNumericValue(input.charAt(0));
-        int b = Character.getNumericValue(input.charAt(1));
-        String op = String.valueOf(input.charAt(3));
+        String[] inputStr = input.split(" ");
+        int a = Integer.parseInt(inputStr[0]);
+        int b = Integer.parseInt(inputStr[1]);
+        String op = inputStr[2];
         int res = 0;
         switch (op) {
             case "+" -> res = a + b;
@@ -42,6 +43,6 @@ public class Server {
                 return "Invalid operand entered";
             }
         }
-        return STR."\{a}\{op}\{b} = \{res}";
+        return String.format("%s%s%s = %s", a, op, b, res);
     }
 }
