@@ -2,24 +2,31 @@ package ru.savinova.java.basic.homework.homework19;
 
 import java.util.ArrayList;
 
-public class Box<F, A, O> {
+public class Box<T extends Fruit> {
+    private int boxWeight;
 
-    ArrayList<F> boxF = new ArrayList<>();
-    ArrayList<A> boxA = new ArrayList<>();
-    ArrayList<O> boxO = new ArrayList<>();
+    private ArrayList<T> fruits;
 
-
-    public void weight() {
-        // высчитывает вес коробки (например, из веса одного фрукта и их количества, или может через суммирование,
-        // как посчитаете нужным). Вес фрукта задаете самостоятельно, единицы измерения не важны
+    public Box() {
+        this.fruits = new ArrayList<>();
     }
 
-    public void compare() {
-        // позволяющий сравнить текущую коробку с переданной в качестве аргумента. true – если их массы равны.
-        // Можно сравнивать коробки с разными типами фруктов;
+    public int getBoxWeight() {
+        return boxWeight;
     }
 
-    public void add() {
+    public boolean compare(Box box) {
+        return boxWeight == box.getBoxWeight();
+    }
 
+    public void addFruit(T fruit) {
+        fruits.add(fruit);
+        boxWeight += fruit.getWeight();
+    }
+
+    public void pourFruit(Box<? super T> box) {
+        box.boxWeight += this.boxWeight;
+        fruits.clear();
+        this.boxWeight = 0;
     }
 }
