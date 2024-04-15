@@ -14,14 +14,14 @@ public class MainApp {
         boxApple.addFruit(new Apple());
         boxApple.addFruit(new Apple());
 
-        System.out.println(boxOrange.getBoxWeight());
-        System.out.println(boxApple.getBoxWeight());
+        System.out.println(boxOrange.getWeight());
+        System.out.println(boxApple.getWeight());
 
         System.out.println(boxOrange.compare(boxApple));
 
         boxApple.pourFruit(boxApple2);
-        System.out.println(boxOrange.getBoxWeight());
-        System.out.println(boxApple.getBoxWeight());
-        System.out.println(boxApple2.getBoxWeight());
+        System.out.println(boxOrange.getWeight());
+        System.out.println(boxApple.getWeight());
+        System.out.println(boxApple2.getWeight());
     }
 }

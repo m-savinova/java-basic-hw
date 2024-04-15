@@ -1,32 +1,40 @@
 package ru.savinova.java.basic.homework.homework19;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Box<T extends Fruit> {
-    private int boxWeight;
+    private int weight;
 
-    private ArrayList<T> fruits;
+    private List<T> fruits;
 
     public Box() {
         this.fruits = new ArrayList<>();
     }
 
-    public int getBoxWeight() {
-        return boxWeight;
+    public int getWeight() {
+        return weight;
     }
 
     public boolean compare(Box box) {
-        return boxWeight == box.getBoxWeight();
+        return weight == box.getWeight();
     }
 
     public void addFruit(T fruit) {
         fruits.add(fruit);
-        boxWeight += fruit.getWeight();
+        weight += fruit.getWeight();
     }
 
     public void pourFruit(Box<? super T> box) {
-        box.boxWeight += this.boxWeight;
-        fruits.clear();
-        this.boxWeight = 0;
+        if (box == this) {
+            System.out.println("Нельзя пересыпать из одной и той же коробки в неё же))");
+        }
+        if (box == null) {
+            System.out.println("Нечего пересыпать из пустой коробки.");
+        } else {
+            box.weight += this.weight;
+            fruits.clear();
+            this.weight = 0;
+        }
     }
 }
