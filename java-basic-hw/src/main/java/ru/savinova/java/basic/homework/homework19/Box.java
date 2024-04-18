@@ -28,13 +28,14 @@ public class Box<T extends Fruit> {
     public void pourFruit(Box<? super T> box) {
         if (box == this) {
             System.out.println("Нельзя пересыпать из одной и той же коробки в неё же))");
+            return;
         }
         if (box == null) {
             System.out.println("Нечего пересыпать из пустой коробки.");
-        } else {
-            box.weight += this.weight;
-            fruits.clear();
-            this.weight = 0;
+            return;
         }
+        box.weight += this.weight;
+        fruits.clear();
+        this.weight = 0;
     }
 }
