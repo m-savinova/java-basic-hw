@@ -6,17 +6,17 @@ import java.util.List;
 
 public class ActionsWithArrays {
     public int[] getAllAfterLastOne(int[] arr) {
-        int[] res = null;
-        for (int i = arr.length - 1; i > 0; i--) {
+        int[] res;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == 1 && i == arr.length-1) {
+                return null;
+            }
             if (arr[i] == 1) {
-                res = Arrays.copyOfRange(arr, i + 1, arr.length);
+                res = Arrays.copyOfRange(arr, i+1, arr.length);
+                return res;
             }
         }
-        if (res == null) {
-            throw new RuntimeException("В массиве нет ни одной единицы.");
-        } else {
-            return res;
-        }
+        throw new RuntimeException("В массиве нет ни одной единицы.");
     }
 
     public boolean containsOnlyOneAndTwo(int[] arr) {
@@ -29,6 +29,6 @@ public class ActionsWithArrays {
                 arrOfElse.add(arr[i]);
             }
         }
-        return (arrOfOneAndTwo.contains(1) || arrOfElse.contains(2)) && arrOfElse.isEmpty();
+        return (arrOfOneAndTwo.contains(1) && arrOfOneAndTwo.contains(2)) && arrOfElse.isEmpty();
     }
 }

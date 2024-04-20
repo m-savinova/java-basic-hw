@@ -1,9 +1,11 @@
 package ru.savinova.java.basic.homework.homework22;
 
+import java.util.Arrays;
+
 public class MainApp {
     public static void main(String[] args) {
         ActionsWithArrays a = new ActionsWithArrays();
-        a.getAllAfterLastOne(new int[]{1, 2, 1, 4, 5});
-        System.out.println(a.containsOnlyOneAndTwo(new int[]{1, 1}));
+        System.out.println(Arrays.toString(a.getAllAfterLastOne(new int[]{2, 4})));
+        System.out.println(a.containsOnlyOneAndTwo(new int[]{1, 2}));
     }
 }

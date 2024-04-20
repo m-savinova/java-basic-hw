@@ -15,13 +15,46 @@ public class ActionsWithArraysTests {
 
     @Test
     public void getAllAfterLastOneTest() {
-        Assertions.assertArrayEquals(new int[]{4, 5}, actions.getAllAfterLastOne(new int[]{1, 2, 1, 4, 5}));
+        Assertions.assertAll(
+                () -> {
+                    Assertions.assertArrayEquals(new int[]{4, 5}, actions.getAllAfterLastOne(new int[]{1, 2, 1, 4, 5}));
+                },
+                () -> {
+                    Assertions.assertArrayEquals(new int[]{2, 3, 4, 5}, actions.getAllAfterLastOne(new int[]{1, 2, 3, 4, 5}));
+                },
+                () -> {
+                    Assertions.assertArrayEquals(null, actions.getAllAfterLastOne(new int[]{2, 3, 4, 1}));
+                }
+        );
     }
 
     @Test
-    public void noDigitOneInArray() {
+    public void noDigitOneInArrayTest() {
         Assertions.assertThrowsExactly(RuntimeException.class, () -> {
             actions.getAllAfterLastOne(new int[]{2, 4, 5});
         });
+    }
+
+    @Test
+    public void containsOnlyOneAndTwoTest() {
+        Assertions.assertTrue(actions.containsOnlyOneAndTwo(new int[]{1, 2, 1, 2}));
+    }
+
+    @Test
+    public void containsNotOnlyOneAndTwoTest() {
+        Assertions.assertAll(
+                () -> {
+                    Assertions.assertFalse(actions.containsOnlyOneAndTwo(new int[]{1, 2, 1, 2, 0}));
+                },
+                () -> {
+                    Assertions.assertFalse(actions.containsOnlyOneAndTwo(new int[]{4, 6, 0}));
+                },
+                () -> {
+                    Assertions.assertFalse(actions.containsOnlyOneAndTwo(new int[]{1, 1}));
+                },
+                () -> {
+                    Assertions.assertFalse(actions.containsOnlyOneAndTwo(new int[]{2}));
+                }
+        );
     }
 }
