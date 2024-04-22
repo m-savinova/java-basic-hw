@@ -9,7 +9,7 @@ public class ActionsWithArrays {
         int[] res;
         for (int i = arr.length - 1; i >= 0; i--) {
             if (arr[i] == 1 && i == arr.length-1) {
-                return null;
+                return new int[0];
             }
             if (arr[i] == 1) {
                 res = Arrays.copyOfRange(arr, i+1, arr.length);
@@ -21,14 +21,13 @@ public class ActionsWithArrays {
 
     public boolean containsOnlyOneAndTwo(int[] arr) {
         List<Integer> arrOfOneAndTwo = new ArrayList<>();
-        List<Integer> arrOfElse = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 1 || arr[i] == 2) {
                 arrOfOneAndTwo.add(arr[i]);
             } else {
-                arrOfElse.add(arr[i]);
+                return false;
             }
         }
-        return (arrOfOneAndTwo.contains(1) && arrOfOneAndTwo.contains(2)) && arrOfElse.isEmpty();
+        return (arrOfOneAndTwo.contains(1) && arrOfOneAndTwo.contains(2));
     }
 }

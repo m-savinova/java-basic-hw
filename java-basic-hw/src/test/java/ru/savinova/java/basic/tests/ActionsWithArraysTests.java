@@ -23,7 +23,7 @@ public class ActionsWithArraysTests {
                     Assertions.assertArrayEquals(new int[]{2, 3, 4, 5}, actions.getAllAfterLastOne(new int[]{1, 2, 3, 4, 5}));
                 },
                 () -> {
-                    Assertions.assertArrayEquals(null, actions.getAllAfterLastOne(new int[]{2, 3, 4, 1}));
+                    Assertions.assertArrayEquals(new int[0], actions.getAllAfterLastOne(new int[]{2, 3, 4, 1}));
                 }
         );
     }
